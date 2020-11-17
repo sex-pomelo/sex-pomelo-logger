@@ -1,11 +1,11 @@
-pomelo-logger
+sex-pomelo-logger
 ========
 
-pomelo-logger is a [log4js](https://github.com/nomiddlename/log4js-node) wrapper for [pomelo](https://github.com/NetEase/pomelo) which provides some useful features.  
+sex-pomelo-logger is a [log4js](https://github.com/nomiddlename/log4js-node) wrapper for [pomelo](https://github.com/NetEase/pomelo) which provides some useful features.  
 
 ## Installation
 ```
-npm install pomelo-logger
+npm install @sex-pomelo/sex-pomelo-logger
 ```
 
 ## Features
@@ -28,15 +28,25 @@ process.env.LOGGER_LINE = true;
 in pomelo, you just configure the log4js file and set **lineDebug** for true  
 ```
 {
-  "appenders": [
-  ],
+  "appenders": {
+    "console":{ "type":"console"},
+    "con-log":{
+        "type": "file",
+        "filename": "${opts:base}/logs/con-log-${opts:serverId}.log",
+        "maxLogSize": 1048576,
+        "layout": {"type": "basic"},
+        "backups": 5
+    },
+  },
 
-  "levels": {
+  "categories": {
+    "con-log": { "appenders": ["con-log"], "level":"all" },
+    "pomelo": { "appenders": ["console","pomelo"], "level":"WARN" }
   }, 
 
-  "replaceConsole": true,
+  "reloadSecs": 10,
 
-  "lineDebug": true
+  "lineDebug": false
 }
 ```
 
@@ -50,15 +60,25 @@ process.env.RAW_MESSAGE = true;
 in pomelo, you just configure the log4js file and set **rawMessage** for true  
 ```
 {
-  "appenders": [
-  ],
+  "appenders": {
+    "console":{ "type":"console"},
+    "con-log":{
+        "type": "file",
+        "filename": "${opts:base}/logs/con-log-${opts:serverId}.log",
+        "maxLogSize": 1048576,
+        "layout": {"type": "basic"},
+        "backups": 5
+    },
+  },
 
-  "levels": {
+  "categories": {
+    "con-log": { "appenders": ["con-log"], "level":"all" },
+    "pomelo": { "appenders": ["console","pomelo"], "level":"WARN" }
   }, 
 
-  "replaceConsole": true,
+  "reloadSecs": 10,
 
-  "rawMessage": true
+  "lineDebug": false
 }
 ```
 
