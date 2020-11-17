@@ -1,6 +1,6 @@
 {
     "name": "@sex-pomelo/sex-pomelo-logger",
-    "version": "0.1.12",
+    "version": "0.1.13",
     "private": false,
     "dependencies": {
         "log4js": "^6.3.0"
