@@ -15,7 +15,7 @@ plogger.configure({
 
  let logger = plogger.getLogger('log', __filename, process.pid);
 
-process.env.LOGGER_LINE = true;
+process.env.LOGGER_LINE = 'true';
 logger.info('test1');
 logger.warn('test2');
 logger.error('test3');
