@@ -1,41 +1,32 @@
-# sex-pomelo-logger
-
+sex-pomelo-logger
 ========
 
 sex-pomelo-logger is a [log4js](https://github.com/nomiddlename/log4js-node) wrapper for [pomelo](https://github.com/NetEase/pomelo) which provides some useful features.  
 
 ## Installation
-
-```bash
+```
 npm install @sex-pomelo/sex-pomelo-logger
 ```
 
 ## Features
-
 ### log prefix
-
 besides category, you can output prefix as you like in your log  
 prefix can be filename, serverId, serverType, host etc  
-to use this feature, you just pass prefix params to getLogger function
-
-```js
+to use this feature, you just pass prefix params to getLogger function  
+```
 var logger = require('@sex-pomelo/sex-pomelo-logger').getLogger(category, prefix1, prefix2, ...);
 ```
-
- log output msg will output with prefix ahead
+ log output msg will output with prefix ahead   
 
 ### get line number in debug
-
 when in debug environment, you may want to get the line number of the log  
-to use this feature, add this code
-
-```js
+to use this feature, add this code   
+```
 process.env.LOGGER_LINE = true;
 ```
 
 in pomelo, you just configure the log4js file and set **lineDebug** for true  
-
-```json
+```
 {
   "appenders": {
     "console":{ "type":"console"},
@@ -60,17 +51,14 @@ in pomelo, you just configure the log4js file and set **lineDebug** for true
 ```
 
 ### log raw messages
-
 in raw message mode, your log message will be simply your messages, no prefix and color format strings  
 to use this feature, add this code  
-
-```js
+```
 process.env.RAW_MESSAGE = true;
 ```
 
 in pomelo, you just configure the log4js file and set **rawMessage** for true  
-
-```json
+```
 {
   "appenders": {
     "console":{ "type":"console"},
@@ -95,22 +83,17 @@ in pomelo, you just configure the log4js file and set **rawMessage** for true
 ```
 
 ### dynamic configure logger level
-
 in pomelo logger configuration file log4js.json, you can add reloadSecs option. The reloadSecs means reload logger configuration file every given time. For example
-
-```json
+```
 {
- "reloadSecs": 30
+	"reloadSecs": 30
 }
 ```
-
 the above configuration means reload the configuration file every 30 seconds. You can dynamic change the logger level, but it does not support dynamiclly changing configuration of appenders.
 
 ## Example
-
 log.js
-
-```js
+```
 var logger = require('@sex-pomelo/sex-pomelo-logger').getLogger('log', __filename, process.pid);
 
 process.env.LOGGER_LINE = true;
@@ -120,7 +103,6 @@ logger.error('test3');
 ```
 
 ## License
-
 (The MIT License)
 
 Copyright (c) 2012-2013 NetEase, Inc. and other contributors

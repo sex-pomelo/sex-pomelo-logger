@@ -9,3 +9,5 @@ node_modules/*
 *.sublime-workspace
 package-lock.json
 .vscode/launch.json
+
+**/*.log
